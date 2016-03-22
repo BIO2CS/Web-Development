@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Event Propagation</title>
+
+<style>
+#t-daddy { border: 1px solid red }
+#c1 { background-color: pink; }
+</style>
+
+<script>
+function stopEvent(ev) {
+  c2 = document.getElementById("c2");
+  c2.innerHTML = "hello";
+
+  // this ought to keep t-daddy from getting the click.
+  ev.stopPropagation();
+  alert("event propagation halted.");
+}
+
+function load() {
+  elem = document.getElementById("tbl1");
+  elem.addEventListener("click", stopEvent, false);
+}
+</script>
+<style>
+.left-arrow {
+	display: inline-block;
+	position: relative;
+	background: grey;
+	padding: 5px;
+	width: 20px;
+	height: 10px;
+}
+.left-arrow:after {
+	content: '';
+	display: block;  
+	position: absolute;
+	right: 100%;
+	top: 50%;
+	margin-top: -10px;
+	width: 0;
+	height: 0;
+	border-top: 10px solid transparent;
+	border-right: 10px solid grey;
+	border-bottom: 10px solid transparent;
+	border-left: 10px solid transparent;
+}
+
+.right-arrow {
+	position: relative;
+	background: grey;
+	padding: 5px;
+	width: 20px;
+	height: 10px;
+}
+.right-arrow:after {
+	content: '';
+	display: block;  
+	position: absolute;
+	left: 100%;
+	top: 50%;
+	margin-top: -10px;
+	width: 0;
+	height: 0;
+	border-top: 10px solid transparent;
+	border-right: 10px solid transparent;
+	border-bottom: 10px solid transparent;
+	border-left: 10px solid grey;
+}
+</style>
+</head>
+
+<body onload="load();">
+
+<table id="t-daddy" onclick="alert('hi');">
+  <tr id="tbl1">
+    <td id="c1">one</td>
+  </tr>
+  <tr>
+    <td id="c2">two</td>
+  </tr>
+</table>
+
+<div class="left-arrow"></div>
+<div id="out">
+	<div style="float:left">left</div>
+	<div style="float:left">middle</div>
+	<div class="right-arrow" style="float:right"></div>
+</div>
+</body>
+</html>
