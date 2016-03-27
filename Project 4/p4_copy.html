@@ -1,15 +1,16 @@
 <!doctype html>
 <!--Defined everything in side the html tag to be an angular view template with the
-controller named MainController.-->
-<html ng-app="cs142App" ng-controller="MainController">
+controller named MainControllerCopy.-->
+<html ng-app="cs142App" ng-controller="MainControllerCopy">
     <head>
         <!-- Example of setting the page title from the controller. The template can
         be an expression so we have a default value if the controller doesn't define it-->
         <title>{{main.title || "CS142 Class Project"}}</title>
         <!-- Add Angular -->
         <script src="node_modules/angular/angular.js"></script>
-        <!--Include the main controller (MainController) and stylesheet -->
-        <script src="mainController.js"></script>
+        <script src="node_modules/angular-route/angular-route.min.js"></script>
+        <!--Include the main controller (MainControllerCopy) and stylesheet -->
+        <script src="mainController_copy.js"></script>
         <!--<link rel="stylesheet" type="text/css" href="main.css" />-->
         <!--Include the controllers and models for all the view templates we are using.  Currently
         that is only the example component.-->
@@ -21,16 +22,24 @@ controller named MainController.-->
         <script src="modelData/states.js"></script>
     </head>
     <body>
-        <div class="header">
-        </div> <!-- Your problem #1 header widget goes here-->
 
         <!--Include the example view template in this div. This will result in the
         controller (ExampleController) being started and the template inserted and
         filled in into the DOM.-->
-        <!-->http://codepen.io/Sinetheta/pen/pgGuf/-->
+        <!--http://codepen.io/Sinetheta/pen/pgGuf/-->
+        <!--
         <button ng-click="main.clickButton()">Switch to <span ng-if="main.buttonClicked">States</span><span ng-if="main.buttonNotClicked">Example</span> page.</button>
 
 		<div ng-if="main.buttonClicked" ng-include="'components/example/exampleTemplate.html'" ng-controller="ExampleController"></div>
 		<div ng-if="main.buttonNotClicked" ng-include="'components/states/statesTemplate.html'" ng-controller="StatesController"></div>
+        -->
+        <div>
+            <ul class="nav">
+                <li><a href="#example"> Example </a></li>
+                <li><a href="#states"> States </a></li>
+            </ul>
+        </div>
+        <div ng-view>
+        </div>
     </body>
 </html>

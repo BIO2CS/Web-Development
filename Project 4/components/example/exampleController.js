@@ -21,7 +21,7 @@ cs142App.controller('ExampleController', ['$scope', function($scope) {
         if ($scope.main) {
             $scope.main.onMottoChange(mottoValue);
         }
-    }
+    };
     
    if ($scope.main) {
       $scope.main.title = 'CS142 Project #4 - Example';
