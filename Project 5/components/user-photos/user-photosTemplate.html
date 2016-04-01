@@ -1,0 +1,14 @@
+<div ng-repeat="photo in main.chosenUserPhotos">
+<md-card>
+    <img ng-src="{{getPhotoPath(photo.file_name)}}"></img>
+    <p>Photo Created on {{photo.date_time}} </p>
+     <md-list>
+        <md-list-item ng-repeat="comment in photo.comments">
+            <div class="md-list-item-text" layout="column">
+            <p>{{comment.comment}}</p>
+            <a href="#users/{{comment.user.id}}"  ng-click="main.onUserClicked()">{{comment.user.first_name}} {{comment.user.last_name}}</a> {{comment.date_time}}
+            </div>
+        </md-list-item>
+     </md-list>
+</md-card>
+</div>

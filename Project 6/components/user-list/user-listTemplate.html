@@ -1,0 +1,10 @@
+<div>
+<h2>Current Users</h2>
+<md-list>
+    <md-list-item class="md-1-line" ng-repeat="user in main.users">
+        <div class="md-list-item-text">
+            <a href="#users/{{user.id}}" ng-click="main.onUserClicked()">{{user.id}} {{user.first_name}} {{user.last_name}}</a>
+        </div>
+    </md-list-item>
+</md-list>
+</div>
